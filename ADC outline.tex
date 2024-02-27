@@ -1,0 +1,47 @@
+\documentclass[11pt, letterpaper]{article}
+%\usepackage[] 
+
+\title{Differential Nonlinearity Analog to Digital Converter Calibration - outline}
+\author{Renee Nichols, others to come}
+\date{February 2024}
+
+\begin{document}
+\maketitle 
+
+Talk about the purpose of this work: calibration of the analog to digital converters allows us to understand the digitization of the input signal which are to be used in towards science goals. Mention the results which demonstrate that in fact we have results that are within specifications produced by the manufacturer when we use the calibration technique that we developed. 
+
+\section{Motivations}
+In this section I am to motivate why this topic is important. Namely that using an original calibration method edges for the adc were found, there were regions of the adc with gaps that had to be interpolated (this could be left out), and the presence of an unbounded integral nonlinearity was found (the result of digitization of a galaxy signal). 
+
+\subsection{Original Method of ADC DNL calibration}
+Here I want to outline the original method taken, including the definition of the filter vs the distribution in order to determine the adc edges. I will motivate this method, including the use of flat pairs to do this work on. I will detail the choice of distribution, filter, dnl definition and more. 
+
+\subsection{Differential and Integral Nonlinearity blow up}
+I want to discuss in detail how the original method had the inl blow up. Including how this felt fabricated (since it was so out of specification). I will also mention skipped bins produced by this method, and edge pile up due to overrepresentation of some bins in our calibrating distribution.
+
+\section{Process}
+Discuss the overarching process used to create a successful calibration of the ADCs. We will go into the subsections as below, and generally will mention them here. These are determining the bin edges (including mathematical formalism), choosing runs, shortcomings, and access for other's use.
+
+\subsection{Determination of ADC edges}
+In this section I will detail the cumulative binning method that produced our calibration that is within specifications. I will talk about using the filter (Savitzky-Golay w33o3), the formulation of the point spread function (pdf), utilizing the cumulative sum and fitting a spline to those values. Finally I will motivate using the convergence method to determine a sufficient right bin edge. Also include discussion of the choice of the first left bin edge. 
+
+\subsection{Choosing runs}
+In this section I will detail about choosing a proper type of run for this calibration. I will discuss the need for the combined distribution to have relatively consistent signal in all adc bins in order to not introduce features into the ADC which are not present. This will include extensive discussion of the fabrication of DNL and INL depending on the starting bin if the distribution is not flat, and the strong evidence that a pre-scaling of flat pairs runs works just as well as ramp of exposures. This will detail that you can input "substructure" of the adc that is not present by not representing portions of the adc consistently across the range
+
+\subsection{Shortcomings}
+In order for others to avoid the issues I have, I will include motivations to avoid the issues that I ran into during this calibration process including the expectation to see print through of signal of the adc (as a normal feature of the adc) and any other issues I find during my process review. These are to include the "padding" of the filter in order to prevent negative counts in bins. I will also include the requirement of a "edge building able bin" to have 100 counts to prevent noise from contaminating the distribution. Attempt at reducing residuals (both by adding to next bin and uncertainty for the bin edges (taken to be 1 count). I will also point out that the ramp run had peaks as well which were troubling, and a work around to a distribution such as this - termination. 
+
+\subsection{GitHub Access}
+In this small section I will refer the reader to the github repository (rejnicho/
+Focal-Plane-DNL-adc-Calibration) where they can access and run this entire program on their own computer. Recommendation to pull images, run analysis file where edges can be extracted, create plots. 
+
+\section{Conclusion}
+In this section I will discuss the results of both using a ramp run and a pre-scaled flat pair run in order to determine the adc edges. I will show that both runs yield very similar results. We will have a few plots which show for the entire focal plane the calibration. 
+
+\section{Future Work}
+Discuss about how it will be beneficial to improve the method slightly by using better parallel processing and more cores to make the process more efficient. Also could discuss science-based applications of this work, including the DESC stuff I have upcoming.
+
+\section{Appendix}
+In this section I want to list the various aspects and things that I put time into, only for it to turn out as a dead end. 
+
+\end{document}
